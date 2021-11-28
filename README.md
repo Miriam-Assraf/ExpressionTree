@@ -4,21 +4,21 @@ Syntax: </br>
 •	Supports +,-,\*,/,^ operands</br>
 •	Supports (),[],{} parentheses</br></br>
 Examples:</br>
-•	A+B*(C/D)^e is valid</br>
+•	A+B\*(C/D)^e is valid</br>
 •	20/2+(11-3) is valid</br>
-•	A+2*B is not valid</br>
+•	A+2\*B is not valid</br>
 •	AB+D is not valid</br>
 •	A(C+d is not valid</br></br>
 
 Syntax of infix expression is checked using regex:</br>
 •	<id> :: [a-zA-Z]	(a single char)</br>
-•	<num> :: [1-9][0-9]*	(at least one digit)</br>
-•	<op> :: [+^*/-]</br>
+•	<num> :: [1-9][0-9]\*	(at least one digit)</br>
+•	<op> :: [+^\*/-]</br>
 •	<expr> :: <id_expr> | <num_expr></br>
 •	<id_expr> :: <base_expr> <continue_expr> | ‘(‘ <base_expr> ‘)’ <continue_expr></br>
-•	< base_expr> :: <id> <op> <id></br>
-•	<continue_expr> :: (<op> <id>)* (<op> ‘(‘ <id> (<op> <id>)* <op> <id> ‘)’ )* <continue_expr></br>
-•	<num_expr> defined the same as <id_expr> but with <num> instead of <id></br></br>
+•	< base_expr> :: \<id> \<op> \<id></br>
+•	<continue_expr> :: (\<op> \<id>)\* (\<op> ‘(‘ \<id> (\<op> \<id>)* \<op> \<id> ‘)’ )\* <continue_expr></br>
+•	<num_expr> defined the same as <id_expr> but with \<num> instead of \<id></br></br>
 
 Expression Tree:</br>
 •	Generates expression tree for a given infix expression by converting it to postfix expression (by default) or prefix expression (if postfix Boolean is set to false)</br>
